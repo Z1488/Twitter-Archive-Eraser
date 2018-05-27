@@ -109,7 +109,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Twitter Archive Eraser_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -247,7 +248,6 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="README.md" />
-    <None Include="Twitter Archive Eraser_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -273,23 +273,11 @@
     <Resource Include="images\left_grey.png" />
     <Resource Include="images\Twitter-256-authorize.png" />
     <Resource Include="images\Twitter-256.png" />
-    <Resource Include="images\twitter_alt.ico" />
-    <Content Include="Licence.txt">
+    <AdditionalFiles Include="Licence.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </AdditionalFiles>
   </ItemGroup>
-  <ItemGroup>
-    <PublishFile Include="Licence.txt">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>DataFile</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
