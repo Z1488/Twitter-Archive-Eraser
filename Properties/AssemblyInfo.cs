@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MARTANI")]
 [assembly: AssemblyProduct("Twitter Archive Eraser")]
-[assembly: AssemblyCopyright("Copyright © MARTANI 2015")]
+[assembly: AssemblyCopyright("Copyright © MARTANI 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,6 +51,6 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("5.1.1.0")]
-[assembly: AssemblyFileVersion("5.1.1.0")]
+[assembly: AssemblyVersion("5.2.0.0")]
+[assembly: AssemblyFileVersion("5.2.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

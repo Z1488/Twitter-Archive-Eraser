@@ -65,7 +65,6 @@ namespace Twitter_Archive_Eraser
             {
                 case ApplicationSettings.EraseTypes.TweetsAndRetweets:
                     throw new Exception("EraseTye should never be EraseTypes.TweetsAndRetweets here");
-                    break;
                 case ApplicationSettings.EraseTypes.Favorites:
                     var user =
                         await
@@ -91,7 +90,7 @@ namespace Twitter_Archive_Eraser
                     lblTweetsMax.Text = "1000 (800 sent, 200 received)";
                     lblTotalTweetsNB.Text = string.Format("(Your DM count: {0})", "N/A");
 
-                    imgTwitterAuth2.Source = new BitmapImage(new Uri(@"pack://application:,,,/Twitter Archive Eraser;component/dm-icon.png"));
+                    imgTwitterAuth2.Source = new BitmapImage(new Uri(@"pack://application:,,,/Twitter Archive Eraser;component/images/dm-icon.png"));
                     imgTwitterAuth2.Margin = new Thickness(5);
 
                     break;
@@ -262,7 +261,6 @@ namespace Twitter_Archive_Eraser
                         {
                             case ApplicationSettings.EraseTypes.TweetsAndRetweets:
                                 throw new Exception("EraseTye should never be EraseTypes.TweetsAndRetweets here");
-                                break;
                             case ApplicationSettings.EraseTypes.Favorites:
                                 favsResponse.Clear();
                                 favsResponse = QueryFavorites(twitterCtx, maxID_favs);
@@ -299,14 +297,21 @@ namespace Twitter_Archive_Eraser
                     bool reachedFavsLimitsOrNoMoreFavs = (favsResponse == null || favsResponse.Count == 0 || favsTweetList.Count == userFavoritesCount);
                     bool noMoreDms = (sentDMsResponse == null || sentDMsResponse.Count == 0) && (receivedDMsResponse == null || receivedDMsResponse.Count == 0);
 
+                    bool isTwitterFavortiesLimitsBug = TweetsEraseType == ApplicationSettings.EraseTypes.Favorites && (favsResponse == null || favsResponse.Count == 0);
+
                     if ((TweetsEraseType == ApplicationSettings.EraseTypes.Favorites && reachedFavsLimitsOrNoMoreFavs)
                         || (TweetsEraseType == ApplicationSettings.EraseTypes.DirectMessages && noMoreDms))
                     {
                         lblContinue.Dispatcher.BeginInvoke(new Action(delegate ()
                         {
-                            lblContinue.Text = "Done fetching tweets!. Please click 'Next' to go to the filter & delete page.";
+                            lblContinue.Text = "Done fetching tweets.";
                             lblContinue.Visibility = System.Windows.Visibility.Visible;
                             stackReachedLimits.Visibility = System.Windows.Visibility.Collapsed;
+
+                            if (isTwitterFavortiesLimitsBug)
+                            {
+                                lblFailedToGetMoreTweets.Visibility = Visibility.Visible;
+                            }
                         }));
 
                         Unset_QueryingTwitter();
@@ -456,7 +461,7 @@ namespace Twitter_Archive_Eraser
         {
             lblFetched.Dispatcher.BeginInvoke(new Action(delegate()
             {
-                lblFetched.Text = string.Format("{0} {1}", n, TweetsEraseType == ApplicationSettings.EraseTypes.DirectMessages ? "DMs" : "Favorites");
+                lblFetched.Text = $"{n} {(TweetsEraseType == ApplicationSettings.EraseTypes.DirectMessages ? "DMs" : "Favorites")}";
             }));
         }
 

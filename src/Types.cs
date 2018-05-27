@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows;
 using System.Deployment.Application;
 
@@ -205,7 +204,7 @@ namespace Twitter_Archive_Eraser
             {
                 if (ApplicationDeployment.IsNetworkDeployed)
                 {
-                    return string.Format("V{0}.{1}.{2}.{3}",
+                    return string.Format("{0}.{1}.{2}.{3}",
                                       ApplicationDeployment.CurrentDeployment.CurrentVersion.Major,
                                       ApplicationDeployment.CurrentDeployment.CurrentVersion.Minor,
                                       ApplicationDeployment.CurrentDeployment.CurrentVersion.Build,
@@ -216,7 +215,7 @@ namespace Twitter_Archive_Eraser
                     Assembly assembly = Assembly.GetExecutingAssembly();
                     FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 
-                    return string.Format("V{0}.{1}.{2}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart);
+                    return string.Format("{0}.{1}.{2}", fvi.FileMajorPart, fvi.FileMinorPart, fvi.FileBuildPart);
                 }
             }
         }
