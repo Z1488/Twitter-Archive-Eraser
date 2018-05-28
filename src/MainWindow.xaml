@@ -104,7 +104,7 @@
             <TextBlock TextWrapping="Wrap" Grid.Column="0" Margin="0 7 0 0">
                 By signing in, you agree to share 
                 <Hyperlink NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate_1">the following information</Hyperlink>
-                which is be used by Twitter Archive Eraser for statistical purposes.
+                with Twitter Archive Eraser.
             </TextBlock>
         
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
