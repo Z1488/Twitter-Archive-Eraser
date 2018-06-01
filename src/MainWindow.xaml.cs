@@ -54,7 +54,7 @@ namespace Twitter_Archive_Eraser
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title += " " + ApplicationSettings.GetApplicationSettings().Version;
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
         }
 
         IAuthorizer PerformAuthorization()

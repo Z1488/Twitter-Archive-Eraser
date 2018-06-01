@@ -13,8 +13,8 @@
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="3" Name="gridTweetsParent" HorizontalAlignment="Stretch" Margin="0 10 0 0">
@@ -56,7 +56,7 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type xcdg:GroupHeaderControl}">
                                         <Border Background="Orange" BorderThickness="0 0 0 1" BorderBrush="Black">
-                                            <Grid>            
+                                            <Grid>
                                                 <ToggleButton Name="btnExpandCollapseGroupHeader" 
                                                               Click="btnExpandCollapseGroupHeader_Click" 
                                                               HorizontalAlignment="Left"
@@ -68,7 +68,7 @@
                                                               IsChecked="True"
                                                               Tag="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Group}" >-</ToggleButton>
                                                 <ContentPresenter Margin="17 0 0 0"/>
-                                                
+
                                                 <CheckBox Name="chkGroupHeader" 
                                                           Tag="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Group.Value}" 
                                                           Click="chkGroupHeader_Click" 
@@ -98,18 +98,22 @@
 
                     <xcdg:DataGridControl.Columns>
                         <xcdg:Column FieldName="YearAndMonth" Title="   Month" Width="100" ReadOnly="True" AllowSort="False"/>
-                        <xcdg:Column FieldName="Type" Title="Type" Width="70" ReadOnly="True" CellHorizontalContentAlignment="Center"/>
                         <xcdg:Column FieldName="Status" Title="Status" Width="110" ReadOnly="True" AllowSort="False" CellHorizontalContentAlignment="Center"/>
-                        <xcdg:Column FieldName="." Title="Erase ?" Width="90" CellEditorDisplayConditions="CellIsCurrent" AllowSort="False" CellHorizontalContentAlignment="Center">
+                        <xcdg:Column FieldName="Type" Title="Type" Width="70" ReadOnly="True" CellHorizontalContentAlignment="Center"/>
+                        <xcdg:Column FieldName="."  Title="Erase ?" Width="90"
+                                     DisplayMemberBinding="{Binding Path=ToErase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     CellEditorDisplayConditions="CellIsCurrent"
+                                     AllowSort="False"
+                                     CellHorizontalContentAlignment="Center" ReadOnly="True">
                             <xcdg:Column.TitleTemplate>
                                 <DataTemplate>
-                                    <CheckBox Name="chkSelectAll" Click="chkSelectAll_Click" Margin="0 2 0 0" ToolTip="Check / Uncheck all">Erase ?</CheckBox>
+                                    <CheckBox Name="chkSelectAll" IsChecked="True" Click="chkSelectAll_Click" Margin="0 2 0 0" ToolTip="Check / Uncheck all">Erase ?</CheckBox>
                                 </DataTemplate>
                             </xcdg:Column.TitleTemplate>
 
                             <xcdg:Column.CellContentTemplate>
                                 <DataTemplate>
-                                    <CheckBox IsChecked="{Binding ToErase, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                    <CheckBox IsChecked="{xcdg:CellEditorBinding NotifyOnSourceUpdated=True}" />
                                 </DataTemplate>
                             </xcdg:Column.CellContentTemplate>
                         </xcdg:Column>
@@ -190,26 +194,32 @@
                     FontWeight="Bold" 
                     Foreground="#FFF50505" 
                     Width="350" 
+                    Height="45"
                     Name="btnEraseTweets"
                     Click="btnEraseTweets_Click" Grid.Column="0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/twitter_alt.ico"/>
-                        <TextBlock Margin="10 0 0 0" FontSize="24" FontWeight="Normal"
-                               Name="btnEraseTweetsLabel">Erase selected tweets</TextBlock>
+                        <TextBlock Margin="10 4 0 0" FontSize="24" FontWeight="Bold"
+                               Name="btnEraseTweetsLabel">Delete selected tweets</TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>
 
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" 
-                    Grid.Row="6" Margin="0 0 0 0" Width="104">
+                    Grid.Row="6" Margin="0 0 0 0" Width="225">
                 <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png"/>
-                <TextBlock Margin="0 7 0 0">  
+                <TextBlock Margin="0 10 0 0">  
                 <Hyperlink NavigateUri="https://twitter.com/martani_net" 
                            RequestNavigate="Hyperlink_RequestNavigate" 
                            TextDecorations="{x:Null}">
                     @martani_net
                 </Hyperlink>
                 </TextBlock>
+                <Button Name="paypalDonate" Width="110" Background="AliceBlue" Height="35" Margin="5 0 0 0" Click="paypalDonate_Click">
+                    <Hyperlink TextDecorations="None">
+                        <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/paypal.png" Margin="0 -10 0 -8"/>
+                    </Hyperlink>
+                </Button>
             </StackPanel>
         </Grid>
 

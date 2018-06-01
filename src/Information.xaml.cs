@@ -22,6 +22,7 @@ namespace Twitter_Archive_Eraser
         public Information()
         {
             InitializeComponent();
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)

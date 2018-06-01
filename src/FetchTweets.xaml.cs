@@ -54,9 +54,9 @@ namespace Twitter_Archive_Eraser
             twitterCtx = settings.Context;
             TweetsEraseType = settings.EraseType;
 
-            Title += " " + settings.Version;
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
 
-            if(twitterCtx == null)
+            if (twitterCtx == null)
             {
                 MessageBox.Show("Internal error: Twitter context is null", "Twitter Archive Eraser");
             }
@@ -353,10 +353,10 @@ namespace Twitter_Archive_Eraser
                      select help)
                     .SingleOrDefault();
 
-            if(helpResponse == null)
+           if(helpResponse == null || helpResponse.RateLimits.Count == 0)
             {
                 // fail quickly, assume limits are hit
-                rateLimitReset = DateTime.Now.AddSeconds(15);   // retry in 15 seconds
+                rateLimitReset = DateTime.UtcNow.AddSeconds(15);   // retry in 15 seconds
 
                 return true;
             }
@@ -366,7 +366,7 @@ namespace Twitter_Archive_Eraser
             var receivedDMsRemainingLimits = helpResponse.RateLimits["direct_messages"].Where(limit => limit.Resource.ToLowerInvariant() == "/direct_messages").FirstOrDefault();
 
             // The following is OK since the app works only in one given mode: either fetching favorites or DMs
-            if(favsRemainingLimits.Remaining == 0)
+            if (favsRemainingLimits.Remaining == 0)
             {
                 rateLimitReset = FromUnixTime(favsRemainingLimits.Reset);
                 return true;
