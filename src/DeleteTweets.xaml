@@ -215,11 +215,6 @@
                     @martani_net
                 </Hyperlink>
                 </TextBlock>
-                <Button Name="paypalDonate" Width="110" Background="AliceBlue" Height="35" Margin="5 0 0 0" Click="paypalDonate_Click">
-                    <Hyperlink TextDecorations="None">
-                        <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/paypal.png" Margin="0 -10 0 -8"/>
-                    </Hyperlink>
-                </Button>
             </StackPanel>
         </Grid>
 

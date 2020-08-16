@@ -127,11 +127,5 @@ namespace Twitter_Archive_Eraser
             DialogResult = true;
             this.Close();
         }
-
-        private void paypalDonate_Click(object sender, RoutedEventArgs e)
-        {   
-            Process.Start(new ProcessStartInfo(ApplicationSettings.PaypalDonationUrl));
-            e.Handled = true;
-        }
     }
 }

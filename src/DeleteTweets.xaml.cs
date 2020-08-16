@@ -730,11 +730,5 @@ namespace Twitter_Archive_Eraser
             // null checks??
             g.IsExpanded = !g.IsExpanded;
         }
-
-        private void paypalDonate_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(ApplicationSettings.PaypalDonationUrl));
-            e.Handled = true;
-        }
     }    
 }

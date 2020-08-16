@@ -242,14 +242,6 @@ namespace Twitter_Archive_Eraser
             return Application.Current.Properties["SETTINGS"] as ApplicationSettings;
         }
 
-        public static string PaypalDonationUrl
-        {
-            get
-            {
-                return "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X3JRQP7DHDPK2&lc=US&item_name=Twitter%20Archive%20Eraser&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted";
-            }
-        }
-
         public enum EraseTypes
         {
             TweetsAndRetweets,
