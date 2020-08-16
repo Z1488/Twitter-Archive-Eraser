@@ -8,7 +8,6 @@ The application is the simplest possible, it works in 3 steps: authenticate with
 
 ### Check [https://github.com/Z1488/Twitter-Archive-Eraser](https://github.com/Z1488/Twitter-Archive-Eraser) for more information.
 
-![Twitter Archive Eraser](http://1.bp.blogspot.com/-LCvlx4R6OYM/URuxyFaMuuI/AAAAAAAAENA/esruT56sJlc/s400/step1.png)
 
 Update
 ----------
@@ -25,14 +24,6 @@ Update
 
 - **Ver 2.0**: 
      - Enables the use of the *.js archive files after the Twitter update the the archive structure.
-
-
-Download executable
--------------------
-
-You can download a working standalone version from here: [Twitter Archive Eraser.zip](Twitter%20Archive%20Eraser.zip?raw=true)
-Or, download the installer which will install all the required software (.NET 4.0 etc.): [Twitter Archive Eraser Setup.zip](Twitter%20Archive%20Eraser%20Setup.zip?raw=true)
-
 
 Licence
 -----------
