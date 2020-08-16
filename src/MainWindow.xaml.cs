@@ -17,11 +17,32 @@ namespace Twitter_Archive_Eraser
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string twitterConsumerKey = ConfigurationManager.AppSettings["twitterConsumerKey"];
-        private string twitterConsumerSecret = ConfigurationManager.AppSettings["twitterConsumerSecret"];
+        static string GetTwitterConsumerKey()
+        {
+            return ConfigurationManager.AppSettings["twitterConsumerKey"];
+        }
 
-        private string twitterConsumerKeyDM = ConfigurationManager.AppSettings["twitterConsumerKeyDM"];
-        private string twitterConsumerSecretDM = ConfigurationManager.AppSettings["twitterConsumerSecretDM"];
+        static string GetTwitterConsumerSecret()
+        {
+            return ConfigurationManager.AppSettings["twitterConsumerSecret"];
+        }
+
+        static string GetTwitterConsumerKeyDM()
+        {
+            return ConfigurationManager.AppSettings["twitterConsumerKeyDM"];
+        }
+
+        static string GetTwitterConsumerSecretDM()
+        {
+            return ConfigurationManager.AppSettings["twitterConsumerSecretDM"];
+        }
+
+
+        private string twitterConsumerKey = GetTwitterConsumerKey();
+        private string twitterConsumerSecret = GetTwitterConsumerSecret();
+
+        private string twitterConsumerKeyDM = GetTwitterConsumerKeyDM();
+        private string twitterConsumerSecretDM = GetTwitterConsumerSecretDM();
 
         bool needsDMPermissions = false;
 
@@ -33,7 +54,7 @@ namespace Twitter_Archive_Eraser
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title += " " + ApplicationSettings.GetApplicationSettings().Version;
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
         }
 
         IAuthorizer PerformAuthorization()
@@ -108,7 +129,6 @@ namespace Twitter_Archive_Eraser
         private async void btnAuthorize_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            chkAcceptToShare.IsEnabled = false;
             btnAuthorize.IsEnabled = false;
 
             var auth = PerformAuthorization();
@@ -166,18 +186,6 @@ namespace Twitter_Archive_Eraser
         {
             Information info = new Information();
             info.ShowDialog();
-        }
-
-        private void AcceptToShare_Click(object sender, RoutedEventArgs e)
-        {
-            if (chkAcceptToShare.IsChecked != null && chkAcceptToShare.IsChecked == true)
-            {
-                btnAuthorize.IsEnabled = true;
-            }
-            else
-            {
-                btnAuthorize.IsEnabled = false;
-            }
         }
 
         void FadeAnimation(FrameworkElement control, double animationOpacityFrom, double animationOpacityTo, int animationDurationInMilliSec)

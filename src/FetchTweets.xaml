@@ -32,7 +32,7 @@
                             IsEnabled="True"
                             Click="btnFetch_Click">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Image Name="imgTwitterAuth2" Source="pack://application:,,,/Twitter Archive Eraser;component/favorite-icon.png"/>
+                        <Image Name="imgTwitterAuth2" Source="pack://application:,,,/Twitter Archive Eraser;component/images/favorite-icon.png"/>
                         <TextBlock Name="btnFetchTxt" Margin="5 3 0 0" FontSize="28" FontWeight="Normal">Start</TextBlock>
                     </StackPanel>
                 </Button>
@@ -40,7 +40,15 @@
                 <ProgressBar Name="progressBar" Height="10" Margin="0 20 0 0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock FontSize="20" Padding="5 0" FontWeight="Bold" HorizontalAlignment="Center">Fetched:</TextBlock>
-                    <TextBlock Name="lblFetched" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">0 tweets</TextBlock>
+                    <TextBlock Name="lblFetched" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center">0 tweets.</TextBlock>
+                    <TextBlock Name="lblFailedToGetMoreTweets" Padding="5 8 0 0" Foreground="#FFED0303" FontWeight="Bold" Visibility="Collapsed">
+                        (Unable to fetch anymore DMs / Favorites; This is
+                        <Hyperlink NavigateUri="https://twittercommunity.com/t/favorites-list-does-not-return-all-favorites"
+                                   RequestNavigate="Hyperlink_RequestNavigate" 
+                                   TextDecorations="{x:Null}">
+                            a known Twitter bug.
+                        </Hyperlink>)
+                    </TextBlock>
                 </StackPanel>
                 <StackPanel Height="70">
                     <StackPanel Grid.Row="0" Name="stackReachedLimits" Orientation="Horizontal" Visibility="Collapsed">
@@ -53,7 +61,7 @@
                                FontSize="18"
                                FontWeight="Bold"
                                Margin="0 10 0 0" 
-                               HorizontalAlignment="Center">Or click 'Next' to continue with the fetched tweets.</TextBlock>
+                               HorizontalAlignment="Center">Click Next to continue with the fetched tweets.</TextBlock>
                 </StackPanel>
             </StackPanel>
             <Button Name="btnNext"
@@ -68,7 +76,7 @@
             </Button>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1">
-            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/Twitter-256.png" Name="imgTwitterGray"/>
+            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png" Name="imgTwitterGray"/>
             <TextBlock Margin="0 7 0 0">  
                 <Hyperlink NavigateUri="https://twitter.com/martani_net" 
                            RequestNavigate="Hyperlink_RequestNavigate" 

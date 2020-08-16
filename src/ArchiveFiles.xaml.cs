@@ -27,7 +27,7 @@ namespace Twitter_Archive_Eraser
 
         void ArchiveFiles_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.Title += " v" + ApplicationSettings.GetApplicationSettings().Version;
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
         }
 
         private void btnAddFiles_Click(object sender, RoutedEventArgs e)

@@ -30,12 +30,12 @@
                         </Hyperlink>
                     </TextBlock>
                 </StackPanel>
-                <TextBlock FontSize="18" Margin="20 0" TextWrapping="Wrap">• Select the tweets to erase from each month below
+                <TextBlock FontSize="18" Margin="20 0" TextWrapping="Wrap">• Select the tweets to delete from each month below
                 </TextBlock>
             </StackPanel>
             <StackPanel Margin="0" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Name="btnAddFiles" Padding="25 3 25 5" FontSize="26" Click="btnAddFiles_Click"
-                        ToolTip="You can add multiple *.zip archive files or *.js files">Load/add twitter archive files</Button>
+                        ToolTip="You can add multiple *.zip archive files or *.js files">Load Twitter archive</Button>
             </StackPanel>
             </StackPanel>
 
@@ -78,7 +78,7 @@
         <Button Grid.Row="2" Name="btnNext" Width="120" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,10,10,10" Click="btnNext_Click">Next</Button>
 
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Margin="0 0 10 0" Width="104">
-            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/Twitter-256.png"/>
+            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png"/>
             <TextBlock Margin="0 7 0 0">  
                 <Hyperlink NavigateUri="https://twitter.com/martani_net" 
                            RequestNavigate="Hyperlink_RequestNavigate" 

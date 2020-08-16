@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 using LinqToTwitter;
 using System.Windows.Media.Animation;
+using System.Diagnostics;
 
 namespace Twitter_Archive_Eraser
 {
@@ -33,7 +34,7 @@ namespace Twitter_Archive_Eraser
         void SendTweet_Loaded(object sender, RoutedEventArgs e)
         {
             var appSettings = ApplicationSettings.GetApplicationSettings();
-            //this.Title += " v" + appSettings.Version;
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
 
             if (appSettings.NumTeetsDeleted < 10)
             {
@@ -125,6 +126,12 @@ namespace Twitter_Archive_Eraser
         {
             DialogResult = true;
             this.Close();
+        }
+
+        private void paypalDonate_Click(object sender, RoutedEventArgs e)
+        {   
+            Process.Start(new ProcessStartInfo(ApplicationSettings.PaypalDonationUrl));
+            e.Handled = true;
         }
     }
 }

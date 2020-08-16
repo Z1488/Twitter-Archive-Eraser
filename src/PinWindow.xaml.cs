@@ -27,6 +27,7 @@ namespace Twitter_Archive_Eraser
 
         void PinWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
         }
 
         public string Pin

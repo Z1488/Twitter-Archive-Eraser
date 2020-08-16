@@ -67,6 +67,8 @@ namespace Twitter_Archive_Eraser
 
         void DeleteTweets_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Title = ApplicationSettings.GetApplicationSettings().GetApplicationTitle();
+
             // Show/Hide options depending on what the user wants to delete
             var settings = ApplicationSettings.GetApplicationSettings();
             switch (settings.EraseType)
@@ -89,14 +91,7 @@ namespace Twitter_Archive_Eraser
 
             // Hide DM sender/receiver column when deleting tweets/favorites
             var column = gridTweets.Columns.Where(c => c.FieldName == "Username").FirstOrDefault();
-            if(column != null && TweetsEraseType == ApplicationSettings.EraseTypes.TweetsAndRetweets) 
-            {
-                column.Visible = false;
-            }
-
-            // Hide extra ToErase column. When providing a custom template for that field, the grid view choses to add it anywyas
-            column = gridTweets.Columns.Where(c => c.FieldName == "ToErase").FirstOrDefault();
-            if (column != null)
+            if (column != null && TweetsEraseType == ApplicationSettings.EraseTypes.TweetsAndRetweets)
             {
                 column.Visible = false;
             }
@@ -158,7 +153,6 @@ namespace Twitter_Archive_Eraser
             
             tweetsCollectionView = CollectionViewSource.GetDefaultView(mTweetsCollection);
             tweetsCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("YearAndMonth"));
-            // tweetsCollectionView.GroupDescriptions.Add(new PropertyGroupDescription("Type"));
 
             RunOnUIThread(delegate()
             {
@@ -778,6 +772,12 @@ namespace Twitter_Archive_Eraser
 
             // null checks??
             g.IsExpanded = !g.IsExpanded;
+        }
+
+        private void paypalDonate_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(ApplicationSettings.PaypalDonationUrl));
+            e.Handled = true;
         }
     }    
 }
