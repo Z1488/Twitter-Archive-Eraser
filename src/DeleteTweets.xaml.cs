@@ -195,18 +195,6 @@ namespace Twitter_Archive_Eraser
         {
             this.Hide();
             globalCancellationSource.Cancel();
-            WebUtils.ReportStats(appSettings.Username,
-                                    appSettings.SessionId.ToString(),
-                                    appSettings.EraseType.ToString(),
-                                    mTweetsCollection.Count,
-                                    mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_DELETED)).Count(),
-                                    mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_NOT_FOUND)).Count(),
-                                    mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_ERROR)).Count(),
-                                    mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_NOT_ALLOWED)).Count(),
-                                    false,
-                                    (int)sliderParallelConnections.Value,
-                                    filters,
-                                    (DateTime.Now - startTime).TotalSeconds);    
 
             // if user didn't hit the return button, this is a legit exit
             if (!hitReturn)
@@ -450,68 +438,44 @@ namespace Twitter_Archive_Eraser
 
                     appSettings.TotalRunningMillisec += runningTime.ElapsedMilliseconds;
 
-                    if (notDeletedTweets.Count == 0)
+                    string jsonTweets = JsonConvert.SerializeObject(notDeletedTweets);
+                    File.WriteAllText(notDeletedTweetsFilename, jsonTweets);
+
+                    if (MessageBox.Show(notDeletedTweets.Count + " tweets were not deleted!\n" +
+                                                                "Do you want to retry deleting these tweets again?\n\n" +
+                                                                "You can try deleting these tweets later by loading them in Twitter Archive Eraser from the following file:\n\n" +
+                                                                notDeletedTweetsFilename + "\n\n" +
+                                                                "Select 'Yes' to retry now, or 'No' to retry later",
+                                    "Twitter Archive Eraser",
+                                    MessageBoxButton.YesNo,
+                                    MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                     {
-                        ShowShareTweetDialog(mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_DELETED)).Count());
-                    }
-                    else
-                    {
-                        string jsonTweets = JsonConvert.SerializeObject(notDeletedTweets);
-                        File.WriteAllText(notDeletedTweetsFilename, jsonTweets);
+                        gridTweets.ItemsSource = null;
+                        gridTweets.Items.Refresh();
 
-                        if (MessageBox.Show(notDeletedTweets.Count + " tweets were not deleted!\n" +
-                                                                 "Do you want to retry deleting these tweets again?\n\n" +
-                                                                 "You can try deleting these tweets later by loading them in Twitter Archive Eraser from the following file:\n\n" +
-                                                                 notDeletedTweetsFilename + "\n\n" +
-                                                                 "Select 'Yes' to retry now, or 'No' to retry later",
-                                        "Twitter Archive Eraser",
-                                        MessageBoxButton.YesNo,
-                                        MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                        tweetsCollectionView = null;
+
+                        mTweetsCollection = new ObservableRangeCollection<Tweet>();
+
+                        mTweetsCollection.AddRange(notDeletedTweets.Select(t => new Tweet()
                         {
-                            WebUtils.ReportStats(appSettings.Username,
-                                                  appSettings.SessionId.ToString(),
-                                                  appSettings.EraseType.ToString(),
-                                                  mTweetsCollection.Count,
-                                                  mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_DELETED)).Count(),
-                                                  mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_NOT_FOUND)).Count(),
-                                                  mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_ERROR)).Count(),
-                                                  mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_NOT_ALLOWED)).Count(),
-                                                  true,
-                                                  nbParallelConnections,
-                                                  filters,
-                                                  (DateTime.Now - startTime).TotalSeconds);
+                            Text = t.text,
+                            ID = t.id_str,
+                            Type = t.retweeted_status != null ? TweetType.Retweet : TweetType.Tweet,
+                            Status = "",
+                            ToErase = true,
+                            Date = Helpers.ParseDateTime(t.created_at)
+                        }));
 
-                            gridTweets.ItemsSource = null;
-                            gridTweets.Items.Refresh();
+                        areTweetsFetchedThroughAPI = true;
 
-                            tweetsCollectionView = null;
+                        notDeletedTweets.Clear();
 
-                            mTweetsCollection = new ObservableRangeCollection<Tweet>();
-
-                            mTweetsCollection.AddRange(notDeletedTweets.Select(t => new Tweet()
-                            {
-                                Text = t.text,
-                                ID = t.id_str,
-                                Type = t.retweeted_status != null ? TweetType.Retweet : TweetType.Tweet,
-                                Status = "",
-                                ToErase = true,
-                                Date = Helpers.ParseDateTime(t.created_at)
-                            }));
-
-                            areTweetsFetchedThroughAPI = true;
-
-                            notDeletedTweets.Clear();
-
-                            // We pass an empty list of jsFiles to reuse code from DeleteTweets_Loaded
-                            // Nothing of clean code I know!
-                            // Sometimes I have hard times sleeping because I know such things are released in the wild
-                            appSettings.JsFiles = new List<JsFile>();
-                            DeleteTweets_Loaded(null, null);
-                        }
-                        else
-                        {
-                            ShowShareTweetDialog(mTweetsCollection.Where(t => String.Equals(t.Status, STATUS_DELETED)).Count());
-                        }
+                        // We pass an empty list of jsFiles to reuse code from DeleteTweets_Loaded
+                        // Nothing of clean code I know!
+                        // Sometimes I have hard times sleeping because I know such things are released in the wild
+                        appSettings.JsFiles = new List<JsFile>();
+                        DeleteTweets_Loaded(null, null);
                     }
                 });
             }
@@ -638,13 +602,6 @@ namespace Twitter_Archive_Eraser
             filterShowRetweetsOnly = false;
             chkShowRetweetOnly.IsChecked = false;
             txtFilterTweets.Text = "";
-        }
-
-        void ShowShareTweetDialog(int numTweetsDeleted)
-        {
-            appSettings.NumTeetsDeleted = numTweetsDeleted;
-            SendTweet sendTweetWindow = new SendTweet();
-            sendTweetWindow.ShowDialog();
         }
 
         void ApplyFilterToCollectionView()

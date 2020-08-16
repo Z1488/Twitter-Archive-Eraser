@@ -156,10 +156,6 @@ namespace Twitter_Archive_Eraser
             var settings = ApplicationSettings.GetApplicationSettings();
             settings.JsFiles = selectedJsFiles;
 
-            WebUtils.ReportMonthsToDelete(settings.Username, 
-                                          settings.SessionId.ToString(),
-                                          selectedJsFiles.Select(jsFile => String.Format("{0}_{1}", jsFile.Year, jsFile.Month)).ToList());
-
             DeleteTweets page = new DeleteTweets();
             this.Hide();
             page.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;

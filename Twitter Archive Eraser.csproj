@@ -211,7 +211,6 @@
       <DependentUpon>SendTweet.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Types.cs" />
-    <Compile Include="src\WebUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -161,8 +161,6 @@ namespace Twitter_Archive_Eraser
             userName.Text = "@" + settings.Username;
             btnAuthorize.IsEnabled = false;
 
-            WebUtils.ReportNewUser(settings.Username, settings.SessionId.ToString());
-
             stackWelcome.Opacity = 0.0;
             stackWelcome.Visibility = System.Windows.Visibility.Visible;
             FadeAnimation(stackAuthorize, 1.0, 0.0, 200);
