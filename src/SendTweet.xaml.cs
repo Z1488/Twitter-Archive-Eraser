@@ -59,7 +59,7 @@ namespace Twitter_Archive_Eraser
                 totalTime = mins + ":" + seconds + " min:sec";
             }
 
-            txtTweetText.Text = String.Format("Just deleted {0} {1} using Twitter Archive Eraser by @martani_net (in {2}). Check it out here http://martani.github.io/Twitter-Archive-Eraser/",
+            txtTweetText.Text = String.Format("Just deleted {0} {1} using Twitter Archive Eraser (in {2}). Check it out here https://github.com/Z1488/Twitter-Archive-Eraser",
                                               appSettings.NumTeetsDeleted,
                                               type,
                                               totalTime);

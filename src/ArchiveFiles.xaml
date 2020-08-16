@@ -76,16 +76,5 @@
         </Grid>
 
         <Button Grid.Row="2" Name="btnNext" Width="120" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,10,10,10" Click="btnNext_Click">Next</Button>
-
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Margin="0 0 10 0" Width="104">
-            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png"/>
-            <TextBlock Margin="0 7 0 0">  
-                <Hyperlink NavigateUri="https://twitter.com/martani_net" 
-                           RequestNavigate="Hyperlink_RequestNavigate" 
-                           TextDecorations="{x:Null}">
-                    @martani_net
-                </Hyperlink>
-            </TextBlock>
-        </StackPanel>
     </Grid>
 </Window>

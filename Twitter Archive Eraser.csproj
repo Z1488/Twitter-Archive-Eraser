@@ -29,10 +29,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://martani.github.io/Twitter-Archive-Eraser/publish/</InstallUrl>
-    <UpdateUrl>http://martani.github.io/Twitter-Archive-Eraser/publish/</UpdateUrl>
-    <SupportUrl>http://martani.github.io/Twitter-Archive-Eraser/</SupportUrl>
-    <ErrorReportUrl>http://martani.github.io/Twitter-Archive-Eraser/</ErrorReportUrl>
+    <InstallUrl>https://github.com/Z1488/Twitter-Archive-Eraser</InstallUrl>
+    <UpdateUrl>https://github.com/Z1488/Twitter-Archive-Eraser</UpdateUrl>
+    <SupportUrl>https://github.com/Z1488/Twitter-Archive-Eraser</SupportUrl>
+    <ErrorReportUrl>https://github.com/Z1488/Twitter-Archive-Eraser</ErrorReportUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Twitter Archive Eraser</ProductName>
     <PublisherName>MARTANI</PublisherName>

@@ -6,7 +6,7 @@ Twitter Archive Eraser allows you delete the oldest tweets from your timeline, o
 The application is the simplest possible, it works in 3 steps: authenticate with Twitter; select which tweets you want to delete; erase them!
 
 
-### Check [http://martani.github.io/Twitter-Archive-Eraser/](http://martani.github.io/Twitter-Archive-Eraser/) for more information.
+### Check [https://github.com/Z1488/Twitter-Archive-Eraser](https://github.com/Z1488/Twitter-Archive-Eraser) for more information.
 
 ![Twitter Archive Eraser](http://1.bp.blogspot.com/-LCvlx4R6OYM/URuxyFaMuuI/AAAAAAAAENA/esruT56sJlc/s400/step1.png)
 

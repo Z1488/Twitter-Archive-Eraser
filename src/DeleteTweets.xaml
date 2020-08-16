@@ -204,18 +204,6 @@
                     </StackPanel>
                 </Button>
             </Grid>
-
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" 
-                    Grid.Row="6" Margin="0 0 0 0" Width="225">
-                <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png"/>
-                <TextBlock Margin="0 10 0 0">  
-                <Hyperlink NavigateUri="https://twitter.com/martani_net" 
-                           RequestNavigate="Hyperlink_RequestNavigate" 
-                           TextDecorations="{x:Null}">
-                    @martani_net
-                </Hyperlink>
-                </TextBlock>
-            </StackPanel>
         </Grid>
 
         <Grid Name="gridOverlayLoading" 

@@ -75,15 +75,5 @@
                 Next
             </Button>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1">
-            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png" Name="imgTwitterGray"/>
-            <TextBlock Margin="0 7 0 0">  
-                <Hyperlink NavigateUri="https://twitter.com/martani_net" 
-                           RequestNavigate="Hyperlink_RequestNavigate" 
-                           TextDecorations="{x:Null}">
-                    @martani_net
-                </Hyperlink>
-            </TextBlock>
-        </StackPanel>
     </Grid>
 </Window>

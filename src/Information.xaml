@@ -4,25 +4,9 @@
         Title="Twitter Archive Eraser" Height="308.415" Width="574.06" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid Margin="10">
         <StackPanel>
-            <TextBlock FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Twitter Archive Eraser stores online the following information for statistical purposes:</TextBlock>
-            <StackPanel Margin="20 5">
-                <TextBlock>- Your Twitter username</TextBlock>
-                <TextBlock>- Number of tweets, favorites or DMs deleted/number of errors while deleting etc.</TextBlock>
-                <TextBlock>- List of the months/years of the deleted tweets</TextBlock>
-                <TextBlock>- List of filter expressions used</TextBlock>
-            </StackPanel>
-
+            <TextBlock FontWeight="Bold" FontSize="14" TextWrapping="Wrap">Twitter Archive Eraser does not store any of your information</TextBlock>
             <TextBlock Margin="0 10 0 0" FontWeight="Bold">Twitter Archive Eraser CANNOT access to your password</TextBlock>
             <TextBlock Margin="0 10 0 0" FontWeight="Bold" TextWrapping="Wrap">Twitter Archive Eraser CANNOT access to your direct messages unless you explicitly grant it access if you choose to delete DMs</TextBlock>
-            <TextBlock Margin="0 10 0 0" FontWeight="Bold">Twitter Archive Eraser WILL NEVER share user identifying information except for:</TextBlock>
-            <TextBlock Margin="10 0 0 0" FontSize="10" TextWrapping="Wrap">* Top user deletes could be mentioned (username and number of deletes) on our website: (
-                <Hyperlink NavigateUri="http://www.martani.net/2015/01/twitter-archive-eraser-year-in-review.html" 
-                           RequestNavigate="Hyperlink_RequestNavigate" 
-                           Foreground="#FF4435D9" FontWeight="Bold">
-                    see here for an example
-                </Hyperlink>
-                )
-            </TextBlock>
 
             <Button Name="btnOK" HorizontalAlignment="Right" Width="64" Margin="0 10 10 0" Height="23" Click="btnOK_Click">OK</Button>
         </StackPanel>

@@ -41,7 +41,7 @@
                 <StackPanel x:Name="stackWelcome" Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal" Margin="10 10 0 5">
                         <TextBlock FontSize="18"><Run Text="Welcome"/></TextBlock>
-                        <TextBlock x:Name="userName" FontSize="18" Margin="10 0 5 0" FontWeight="Bold"><Run Text="@martani_net."/></TextBlock>
+                        <TextBlock x:Name="userName" FontSize="18" Margin="10 0 5 0" FontWeight="Bold"><Run Text="@username"/></TextBlock>
                         <TextBlock FontSize="18"><Run Text="Please choose an option below:"/></TextBlock>
                     </StackPanel>
 
@@ -95,28 +95,5 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Grid Grid.Row="1" Margin="10 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="110"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock TextWrapping="Wrap" Grid.Column="0" Margin="0 7 0 0">
-                By signing in, you agree to share 
-                <Hyperlink NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate_1">the following information</Hyperlink>
-                with Twitter Archive Eraser.
-            </TextBlock>
-        
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
-            <Image Source="pack://application:,,,/Twitter Archive Eraser;component/images/Twitter-256.png" Name="imgTwitterGray"/>
-            <TextBlock Margin="0 7 0 0">  
-                <Hyperlink NavigateUri="https://twitter.com/martani_net" 
-                           RequestNavigate="Hyperlink_RequestNavigate" 
-                           TextDecorations="{x:Null}">
-                    @martani_net
-                </Hyperlink>
-            </TextBlock>
-        </StackPanel>
-        </Grid>
     </Grid>
 </Window>
